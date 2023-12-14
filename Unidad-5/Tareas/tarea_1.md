@@ -1,3 +1,8 @@
+
+<div align="center">
+<img src="https://e7.pngegg.com/pngimages/778/255/png-clipart-sqlite-database-android-mysql-android-text-logo-thumbnail.png" width="200px"/>
+</div>
+
 # **TAREA 1**
 ___
 ## Primeros pasos en SQL
