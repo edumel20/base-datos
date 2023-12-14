@@ -18,3 +18,9 @@ create table Ejemplo (
     booleano BOOLEAN NOT NULL  
 );
 ```
+
+### Paso 2: Inserción de 50 entradas
+Ahora vamos a realizar de las 50 entradas en nuetra tabla tarea1.db mediante los siguientes comandos de sqlite3:
+```
+
+```
