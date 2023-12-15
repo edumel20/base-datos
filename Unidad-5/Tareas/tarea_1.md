@@ -1,5 +1,5 @@
 <div align="center">
-<img src="https://w7.pngwing.com/pngs/548/330/png-transparent-sqlite-hd-logo.png" width="300px"/>
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/SQLite370.svg/2560px-SQLite370.svg.png" width="300px"/>
 </div>
 
 # **TAREA 1**
