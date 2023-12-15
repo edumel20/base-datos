@@ -1,6 +1,6 @@
 
 <div align="center">
-<img src="https://e7.pngegg.com/pngimages/778/255/png-clipart-sqlite-database-android-mysql-android-text-logo-thumbnail.png" width="200px"/>
+<img src="https://e7.pngegg.com/pngimages/778/255/png-clipart-sqlite-database-android-mysql-android-text-logo-thumbnail.png" width="300px"/>
 </div>
 
 # **TAREA 1**
@@ -49,22 +49,44 @@ select * from Ejemplo;
 ```
 El resultado de salida sería el siguiente:
 
-```sql
-
-```
+![Alt text](image.png)
+![Alt text](image-1.png)
 
 2. En este caso mostramos las entradas de la tabla `Ejemplo` con el campo `entero` mayor de 50:
 
 ```sql
-select entero from Ejemplo where entero > 50
+select entero from Ejemplo where entero > 50;
 ```
 El resultado de salida sería el siguiente:
+![Alt text](image-2.png)
+
+
+Ahora mostramos las entradas de la tabla `Ejemplo` con el campo `booleano` que sea **1**:
 
 ```sql
-
+select booleano from Ejemplo where booleano = 1;
 ```
-___
+El resultado es el siguiente:
+![Alt text](image-3.png)
 
+
+Ahora introducimos las entradas de la tabla `Ejemplo` con el campo `decimal` que sea menor de 40.0:
+
+```sql
+select decimal from Ejemplo where decimal < 40.0
+```
+Dando como resultado:
+![Alt text](image-4.png)
+
+
+Por último, introducimos las entradas de la tabla `Ejemplo` con el campo `id` que sea el número 11:
+
+```sql
+select id from Ejemplo where id = 11
+```
+Dando como resultado:
+![Alt text](image-5.png)
+___
 ### Paso 4: Realizar 3 eliminaciones y modificaciones
 1. Eliminamos las entradas donde el campo `booleano` es igual a `True` con el comando que se mostrará a continuación:
 
