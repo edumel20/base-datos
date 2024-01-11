@@ -22,23 +22,25 @@ insert into programa_academico (id) values ('4');
 ___
 
 create table curso (
-	id INTEGER NOT NULL PRIMARY KEY
+	id INTEGER NOT NULL PRIMARY KEY,
+ 	id_programa_academico INTEGER NOT NULL		references programa_academico(id)
 );
 
-insert into curso (id) values ('100');
-insert into curso (id) values ('200');
-insert into curso (id) values ('300');
-insert into curso (id) values ('400');
+insert into curso (id, id_programa_academico) values ('100','1');
+insert into curso (id, id_programa_academico) values ('200','2');
+insert into curso (id, id_programa_academico) values ('300','3');
+insert into curso (id, id_programa_academico) values ('400','4');
+
 
 ```sql
-+-----+
-| id  |
-+-----+
-| 100 |
-| 200 |
-| 300 |
-| 400 |
-+-----+
++-----+-----------------------+
+| id  | id_programa_academico |
++-----+-----------------------+
+| 100 | 1                     |
+| 200 | 2                     |
+| 300 | 3                     |
+| 400 | 4                     |
++-----+-----------------------+
 
 ```
 
@@ -124,3 +126,7 @@ insert into evento (id) values (111100);
 +--------+
 
 ```
+___
+### TABLAS N:M (3FN)
+
+
