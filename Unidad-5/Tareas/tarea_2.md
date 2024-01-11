@@ -338,7 +338,7 @@ ___
 1. Actualizar el nombre de un propietario con DNI '12345678A':
 
 ```sql
-update propietarios set nombre = 'Margaret' where dni = '12345678A';
+update propietarios set nombre = 'Mar' where dni = '12345678A';
 ```
 El resultado de salida es el siguiente:
 
@@ -346,7 +346,7 @@ El resultado de salida es el siguiente:
 +----+----------+-----------+-----------+
 | id |  nombre  | apellido  |    dni    |
 +----+----------+-----------+-----------+
-| 1  | Margaret | Perez     | 12345678A |
+| 1  | Mar      | Perez     | 12345678A |
 | 2  | María    | Lopez     | 87456321B |
 | 3  | Carlos   | Ruiz      | 11111111C |
 | 4  | Laura    | Gomez     | 22222222D |
