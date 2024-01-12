@@ -127,6 +127,79 @@ insert into evento (id) values (111100);
 
 ```
 ___
-### TABLAS N:M (3FN)
+
+create table libro (
+ID TEXT NOT NULL PRIMARY KEY,
+Genero TEXT NOT NULL );
+
+INSERT INTO libro ( ID, Genero ) VALUES ("978-1-4088-0162-5", "ciencia ficcion");
+INSERT INTO libro ( ID, Genero ) VALUES ("978-1-4088-0162-5", "policiaca");
+INSERT INTO libro ( ID, Genero ) VALUES ("978-0-7432-4723-5", "belico");
+INSERT INTO libro ( ID, Genero ) VALUES ("978-0-330-51526-5", "terror");
+INSERT INTO libro ( ID, Genero ) VALUES ("978-0-330-51526-5", "suspense");
+INSERT INTO libro ( ID, Genero ) VALUES ("978-0-553-80244-5", "comedia");
+INSERT INTO libro ( ID, Genero ) VALUES ("978-0-553-80244-5", "fantasia");
+
+___
+
+create table estudiante (
+DNI TEXT NOT NULL PRIMARY KEY,
+NOMBRE TEXT NOT NULL,
+APELLIDOS TEXT NOT NULL,
+id_programa_academico INTEGER NOT NULL		references programa_academico(id)
+);
+
+INSERT INTO estudiante (DNI, NOMBRE, APELLIDOS, id_programa_academico) VALUES ("12345678A","Fancisco","Pérez Ramírez","1");
+INSERT INTO estudiante (DNI, NOMBRE, APELLIDOS, id_programa_academico) VALUES ("87654321B","Miguel","Casas Negredo","2");
+INSERT INTO estudiante (DNI, NOMBRE, APELLIDOS, id_programa_academico) VALUES ("24681357C","Susana","Lago Prados","3");
+INSERT INTO estudiante (DNI, NOMBRE, APELLIDOS, id_programa_academico) VALUES ("13572468D","Elena","Negrín Curbelo","4");
+
+```sql
++-----------+----------+----------------+-----------------------+
+|    DNI    |  NOMBRE  |   APELLIDOS    | id_programa_academico |
++-----------+----------+----------------+-----------------------+
+| 12345678A | Fancisco | Pérez Ramírez  | 1                     |
+| 87654321B | Miguel   | Casas Negredo  | 2                     |
+| 24681357C | Susana   | Lago Prados    | 3                     |
+| 13572468D | Elena    | Negrín Curbelo | 4                     |
++-----------+----------+----------------+-----------------------+
+```
+
+___
+
+create table email (
+id INTEGER NOT NULL PRIMARY KEY,
+email TEXT NOT NULL,
+DNI_estudiante TEXT NOT NULL		references estudiante(DNI)
+);
+
+INSERT INTO email (id, email, DNI_estudiante) VALUES ('1001','franpr20@gmail.com','12345678A');
+INSERT INTO email (id, email, DNI_estudiante) VALUES ('1002','miguelillo21@hotmail','87654321B');
+INSERT INTO email (id, email, DNI_estudiante) VALUES ('1003','casadenegredo@gmail.com','87654321B');
+INSERT INTO email (id, email, DNI_estudiante) VALUES ('1004','pradosusana_01@yahoo.es','24561357C');
+INSERT INTO email (id, email, DNI_estudiante) VALUES ('1005','elenita_negrinn@gmail.es','13572468D');
+INSERT INTO email (id, email, DNI_estudiante) VALUES ('1006','curbelotrabajo@hotmail.com','13572468D');
+
+```sql
++------+----------------------------+----------------+
+|  id  |           email            | DNI_estudiante |
++------+----------------------------+----------------+
+| 1001 | franpr20@gmail.com         | 12345678A      |
+| 1002 | miguelillo21@hotmail       | 87654321B      |
+| 1003 | casadenegredo@gmail.com    | 87654321B      |
+| 1004 | pradosusana_01@yahoo.es    | 24561357C      |
+| 1005 | elenita_negrinn@gmail.es   | 13572468D      |
+| 1006 | curbelotrabajo@hotmail.com | 13572468D      |
++------+----------------------------+----------------+
+```
+
+
+
+
+
+
+
+
+### TABLAS N:M (3FN)	
 
 
