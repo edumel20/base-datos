@@ -1,6 +1,6 @@
 # TABLAS CORREGIDAS
 
-## TABLAS SIN REFERENCIAS
+## TABLAS BBDD
 
 - Tabla Programa Académico:
 
@@ -339,3 +339,170 @@ INSERT INTO aula (id) VALUES ('4000');
 | 4000 |
 +------+
 ```
+
+___
+- Tabla Becas:
+
+```sql
+create table beca (
+id INTEGER NOT NULL PRIMARY KEY
+);
+```
+
+```sql
+INSERT INTO beca (id) VALUES ('0001');
+INSERT INTO beca (id) VALUES ('0002');
+INSERT INTO beca (id) VALUES ('0003');
+INSERT INTO beca (id) VALUES ('0004');
+```
+
+```sql
++------+
+|  id  |
++------+
+| 0001 |
+| 0002 |
+| 0003 |
+| 0004 |
++------+
+```
+
+___
+- Tabla Empleados Administrativos:
+
+```sql
+create table empleado_administrativo (
+id INTEGER NOT NULL PRIMARY KEY
+);
+```
+
+```sql
+INSERT INTO empleado_administrativo (id) VALUES ('00001');
+INSERT INTO empleado_administrativo (id) VALUES ('00002');
+INSERT INTO empleado_administrativo (id) VALUES ('00003');
+INSERT INTO empleado_administrativo (id) VALUES ('00004');
+```
+
+```sql
++-------+
+|   id  |
++-------+
+| 00001 |
+| 00002 |
+| 00003 |
+| 00004 |
++-------+
+```
+
+___
+- Tarea Empresas Asociadas:
+
+```sql
+create table empresa_asociada (
+id TEXT NOT NULL PRIMARY KEY
+);
+```
+
+```sql
+INSERT INTO empresa_asociada (id) VALUES ('1-A');
+INSERT INTO empresa_asociada (id) VALUES ('1-B');
+INSERT INTO empresa_asociada (id) VALUES ('1-C');
+INSERT INTO empresa_asociada (id) VALUES ('1-D');
+```
+
+```sql
++-----+
+| id  |
++-----+
+| 1-A |
+| 1-B |
+| 1-C |
+| 1-D |
++-----+
+```
+
+___
+- Tabla Eventos:
+
+```sql
+create table evento (
+id INTEGER NOT NULL PRIMARY KEY
+);
+```
+
+```sql
+INSERT INTO evento (id) VALUES ('100000');
+INSERT INTO evento (id) VALUES ('110000');
+INSERT INTO evento (id) VALUES ('111000');
+INSERT INTO evento (id) VALUES ('111100');
+```
+
+```sql
++--------+
+|   id   |
++--------+
+| 100000 |
+| 110000 |
+| 111000 |
+| 111100 |
++--------+
+```
+
+___
+- Tabla Departamentos:
+
+```sql
+create table departamento (
+id INTEGER NOT NULL PRIMARY KEY
+);
+```
+
+```sql
+INSERT INTO departamento (id) VALUES ('10000');
+INSERT INTO departamento (id) VALUES ('20000');
+INSERT INTO departamento (id) VALUES ('30000');
+INSERT INTO departamento (id) VALUES ('40000');
+```
+
+```sql
++-------+
+|  id   |
++-------+
+| 10000 |
+| 20000 |
+| 30000 |
+| 40000 |
++-------+
+```
+
+___
+- Tabla Instalaciones Deportivas:
+
+```sql
+create table instalacion_deportiva (
+id INTEGER NOT NULL PRIMARY KEY
+);
+```
+
+```sql
+INSERT INTO instalacion_deportiva (id) VALUES ('000001');
+INSERT INTO instalacion_deportiva (id) VALUES ('000002');
+INSERT INTO instalacion_deportiva (id) VALUES ('000003');
+INSERT INTO instalacion_deportiva (id) VALUES ('000004');
+```
+
+```sql
++----------+
+|    id    |
++----------+
+|  000001  |
+|  000002  |
+|  000003  |
+|  000004  |
++----------+
+```
+
+___
+
+## TABLAS N:M GENERADAS
+
