@@ -506,3 +506,32 @@ ___
 
 ## TABLAS N:M GENERADAS
 
+- Tabla Profesor imparte Curso:
+
+```sql
+create table profesor_imparte_curso (
+dni_profesor TEXT NOT NULL      references profesor(dni),
+id_curso INTEGER NOT NULL      references curso(id),
+PRIMARY KEY (dni_profesor, id_curso)
+);
+```
+
+```sql
+INSERT INTO profesor_imparte_curso (dni_profesor, id_curso) VALUES ('56781234W','100');
+INSERT INTO profesor_imparte_curso (dni_profesor, id_curso) VALUES ('46970812R','200');
+INSERT INTO profesor_imparte_curso (dni_profesor, id_curso) VALUES ('23418567Q','300');
+INSERT INTO profesor_imparte_curso (dni_profesor, id_curso) VALUES ('53421300S','400');
+```
+
+```sql
++--------------+----------+
+| dni_profesor | id_curso |
++--------------+----------+
+| 56781234W    | 100      |
+| 46970812R    | 200      |
+| 23418567Q    | 300      |
+| 53421300S    | 400      |
++--------------+----------+
+```
+
+___
