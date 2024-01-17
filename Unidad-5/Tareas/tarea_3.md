@@ -240,10 +240,11 @@ select CONCAT(nombre, departamento) AS nombre_departamento from empleados;
 - Categoriza a los empleados según sus salarios:
 
 ```sql
+select CASE when salario < 50000 THEN 'Alto' ELSE 'Bajo' END AS rango_salario;
 ```
 ```sql
 ```
-PREGUNTAR EN CLASE
+AÑADIR UMA SENTENCIA MÁS:
 
 
 8. **Funciones de Agregación (SUM)**:
