@@ -489,3 +489,6 @@ El resultado de salida es:
 +----+------------+------------+------+----------------+
 ```
 
+___
+### Autor
+[Eduardo Rabadán Melián](https://github.com/edumel20)

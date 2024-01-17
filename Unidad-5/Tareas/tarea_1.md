@@ -339,3 +339,6 @@ El resultado es el siguiente:
 | 49 | Modificado | 38     | 50.0    | 2023-12-15 | 0        |
 +----+------------+--------+---------+------------+----------+
 ```
+___
+### Autor
+[Eduardo Rabadán Melián](https://github.com/edumel20)
