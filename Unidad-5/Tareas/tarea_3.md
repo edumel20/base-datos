@@ -6,7 +6,7 @@
 ___
 ## Primeros pasos en SQL
 
-### Paso 1: Creación de l BBDD.
+### Paso 1: Creación de la BBDD.
 
 Se crea el fichero *empleados-dump.sql* con la siguiente información: 
 
