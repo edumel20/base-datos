@@ -1,5 +1,5 @@
--- Tablas Pokemon y Tipo antes de las modificaciones:
-
+## -- Tablas Pokemon y Tipo antes de las modificaciones:
+```sql
 /**
 +----+------------+---------+-------+
 | id |   nombre   | id_tipo | nivel |
@@ -31,7 +31,8 @@
 | 25 | Rhydon     | 5       | 80    |
 +----+------------+---------+-------+
 **/
-
+```
+```sql
 /**
 +----+-----------+
 | id |  nombre   |
@@ -43,10 +44,10 @@
 | 5  | Tierra    |
 +----+-----------+
 **/
+```
 
-
- -- Actualizar el nivel de Bulbasaur.
-
+ 1. -- Actualizar el nivel de Bulbasaur.
+```sql
 /**
 +----+------------+---------+-------+
 | id |   nombre   | id_tipo | nivel |
@@ -54,7 +55,11 @@
 | 1  | Bulbasaur  | 3       | 10    |
 +----+------------+---------+-------+
 **/
+```
+```sql
  update Pokemon set nivel = 21 where nombre = 'Bulbasaur';
+```
+```sql
 /**
 +----+-----------+---------+-------+
 | id |  nombre   | id_tipo | nivel |
@@ -62,10 +67,10 @@
 | 1  | Bulbasaur | 3       | 21    |
 +----+-----------+---------+-------+
 **/
+```
 
-
- -- Cambiar el tipo de Pikachu a "Eléctrico/Rojo".
-
+ 2. -- Cambiar el tipo de Pikachu a "Eléctrico/Rojo".
+```sql
  /**
  +----+------------+---------+-------+
  | id |   nombre   | id_tipo | nivel |
@@ -73,15 +78,20 @@
  | 4  | Pikachu    | 4       | 15    |
  +----+------------+---------+-------+
  **/
-
+```
+```sql
  update tipo as t set nombre='Electrico/Rojo' from Pokemon as p where p.id_tipo=t.id and p.nombre='Pikachu';
-
+```
+```sql
 /**
 
 **/
- -- Incrementar el nivel de todos los Pokémon de tipo Agua.
-
- update Pokemon as p set nivel = nivel + 1 from tipo as t where t.nombre = 'Agua'; 
+```
+ 3. -- Incrementar el nivel de todos los Pokémon de tipo Agua.
+```sql
+ update Pokemon as p set nivel = nivel + 1 from tipo as t where t.nombre = 'Agua';
+```
+```sql 
 /**
  select p.* from Pokemon as p, tipo as t where p.id_tipo=t.id and t.nombre='Agua';
 
@@ -94,27 +104,30 @@
 | 18 | Blastoise | 1       | 56    |
 +----+-----------+---------+-------+
 **/
-
- -- Eliminar a Jynx de la lista de Pokémon.
-
+```
+ 4. -- Eliminar a Jynx de la lista de Pokémon.
+```sql
  delete from Pokemon where nombre= 'Jynx';
-
+```
+```sql
  /**
  No ocurre nada debido a que 'Jynx' no estaba en la tabla 'Pokemon'.
  **/
-
- -- Eliminar el tipo "Hielo" de la lista de tipos de Pokémon.
-
+```
+ 5. -- Eliminar el tipo "Hielo" de la lista de tipos de Pokémon.
+```sql
 delete from Tipos where nombre = 'Hielo';
-
+```
+```sql
 /**
 No ocurre nada debido a que el tipo 'Hielo' no está en la tabla 'Tipos'.
 **/
-
- -- Obtener todos los Pokémon.
-
+```
+ 6. -- Obtener todos los Pokémon.
+```sql
  select nombre from Pokemon;
-
+```
+```sql
  /**
 +------------+
 |   nombre   |
@@ -146,11 +159,12 @@ No ocurre nada debido a que el tipo 'Hielo' no está en la tabla 'Tipos'.
 | Rhydon     |
 +------------+
  **/
-
- -- Obtener el nombre y nivel de los Pokémon de tipo Fuego.
-
+```
+ 7. -- Obtener el nombre y nivel de los Pokémon de tipo Fuego.
+```sql
 select p.nombre, p.nivel from Pokemon as p, Tipo as t where t.nombre='Fuego' and t.id=p.id_tipo;
-
+```
+```sql
 /**
 +------------+-------+
 |   nombre   | nivel |
@@ -163,11 +177,13 @@ select p.nombre, p.nivel from Pokemon as p, Tipo as t where t.nombre='Fuego' and
 | Flareon    | 66    |
 +------------+-------+
 **/
+```
 
- -- Obtener el nombre de los Pokémon que tienen un nivel superior a 30.
-
+ 8. -- Obtener el nombre de los Pokémon que tienen un nivel superior a 30.
+```sql
  select * from Pokemon where nivel >= 30;
-
+```
+```sql
 /**
 +----+------------+---------+-------+
 | id |   nombre   | id_tipo | nivel |
@@ -189,10 +205,12 @@ select p.nombre, p.nivel from Pokemon as p, Tipo as t where t.nombre='Fuego' and
 | 25 | Rhydon     | 5       | 81    |
 +----+------------+---------+-------+
 **/
- -- Obtener el nombre de los Pokémon ordenados por nivel de forma descendente.
-
+```
+ 9. -- Obtener el nombre de los Pokémon ordenados por nivel de forma descendente.
+```sql
  select nombre, nivel from Pokemon ORDER BY nivel desc; 
-
+```
+```sql
  /**
  +------------+-------+
 |   nombre   | nivel |
@@ -224,11 +242,12 @@ select p.nombre, p.nivel from Pokemon as p, Tipo as t where t.nombre='Fuego' and
 | Squirtle   | 9     |
 +------------+-------+
  **/
-
- -- Obtener la cantidad de Pokémon por tipo.
-
+```
+ 10. -- Obtener la cantidad de Pokémon por tipo.
+```sql
  select t.nombre, count(id_tipo) as 'Total tipos' from Pokemon as p, tipo as t where t.id=p.id_tipo group by p.id_tipo;
-
+```
+```sql
 /**
 +-----------+-------------+
 |  nombre   | total_tipos |
@@ -240,10 +259,12 @@ select p.nombre, p.nivel from Pokemon as p, Tipo as t where t.nombre='Fuego' and
 | Tierra    | 5           |
 +-----------+-------------+
 **/
- -- Obtener la información completa de un Pokémon específico. Selecciona el que desees.
-
+```
+ 11. -- Obtener la información completa de un Pokémon específico. Selecciona el que desees.
+```sql
 select * from Pokemon where id = 14;
-
+```
+```sql
 /**
 +----+--------+---------+-------+
 | id | nombre | id_tipo | nivel |
@@ -251,9 +272,12 @@ select * from Pokemon where id = 14;
 | 14 | Raichu | 4       | 39    |
 +----+--------+---------+-------+
 **/
- -- Obtener el promedio de niveles de todos los Pokémon.
+```
+ 12. -- Obtener el promedio de niveles de todos los Pokémon.
+```sql
 select AVG(nivel) AS nivel_media from Pokemon;
-
+```
+```sql
 /**
 +-------------+
 | nivel_media |
@@ -261,11 +285,12 @@ select AVG(nivel) AS nivel_media from Pokemon;
 | 38.96       |
 +-------------+
 **/
-
- -- Obtener el nombre del Pokémon de mayor nivel.
-
+```
+ 13. -- Obtener el nombre del Pokémon de mayor nivel.
+```sql
 select nombre from Pokemon where (select MAX(nivel) from Pokemon) ORDER BY nivel desc LIMIT 1;
-
+```
+```sql
 /**
 +--------+
 | nombre |
@@ -273,10 +298,12 @@ select nombre from Pokemon where (select MAX(nivel) from Pokemon) ORDER BY nivel
 | Rhydon |
 +--------+
 **/
- -- Actualizar el nombre de Bulbasaur a "Bulbasaur Nv. 15":
-
+```
+ 14. -- Actualizar el nombre de Bulbasaur a "Bulbasaur Nv. 15":
+```sql
 update Pokemon set nombre = 'Bulbasaur Nv. 15' where nombre = 'Bulbasaur';
-
+```
+```sql
 /**
 +----+------------------+---------+-------+
 | id |      nombre      | id_tipo | nivel |
@@ -284,27 +311,30 @@ update Pokemon set nombre = 'Bulbasaur Nv. 15' where nombre = 'Bulbasaur';
 | 1  | Bulbasaur Nv. 15 | 3       | 22    |
 +----+------------------+---------+-------+
 **/
-
- -- Obtener los Pokémon cuyo nivel es igual a 50.
-
+```
+ 15. -- Obtener los Pokémon cuyo nivel es igual a 50.
+```sql
  select * from Pokemon where nivel = 50;
-
+```
+```sql
  /**
  No hay ningún pokemon con nivel 50.
  **/
-
- -- Eliminar todos los Pokémon de nivel 40.
-
+```
+ 16. -- Eliminar todos los Pokémon de nivel 40.
+```sql
 delete from Pokemon where nivel = 40;
-
+```
+```sql
 /**
 No hay pokemon con nivel 40.
 **/
-
- -- Obtener el tipo y nivel de Pikachu.
-
+```
+ 17. -- Obtener el tipo y nivel de Pikachu.
+```sql
 select p.nivel, t.nombre from Pokemon p JOIN Tipo t ON p.id_tipo = t.id where p.nombre = 'Pikachu';
-
+```
+```sql
 /**
 +-------+----------------+
 | nivel |     nombre     |
@@ -312,11 +342,12 @@ select p.nivel, t.nombre from Pokemon p JOIN Tipo t ON p.id_tipo = t.id where p.
 | 16    | Electrico/Rojo |
 +-------+----------------+
 **/
-
- -- Obtener los Pokémon de tipo Planta con nivel superior a 20:
-
+```
+ 18. -- Obtener los Pokémon de tipo Planta con nivel superior a 20:
+```sql
 select * from Pokemon AS p, Tipo as t where p.nivel > 20 and t.nombre = 'Planta' and p.id_tipo = t.id;
-
+```
+```sql
 /**
 +----+------------------+---------+-------+----+--------+
 | id |      nombre      | id_tipo | nivel | id | nombre |
@@ -327,11 +358,12 @@ select * from Pokemon AS p, Tipo as t where p.nivel > 20 and t.nombre = 'Planta'
 | 23 | Venusaur         | 3       | 71    | 3  | Planta |
 +----+------------------+---------+-------+----+--------+
 **/
-
- -- Actualizar el tipo de Pikachu a "Eléctrico/Azul":
- 
-update tipo as t set nombre='Electrico/Azul' from Pokemon as p where p.id_tipo=t.id and p.nombre='Pikachu';
-
+```
+ 19. -- Actualizar el tipo de Pikachu a "Eléctrico/Azul":
+ ```sql
+ update tipo as t set nombre='Electrico/Azul' from Pokemon as p where p.id_tipo=t.id and p.nombre='Pikachu';
+ ```
+```sql
 /**
 +-------+----------------+
 | nivel |     nombre     |
@@ -339,10 +371,12 @@ update tipo as t set nombre='Electrico/Azul' from Pokemon as p where p.id_tipo=t
 | 16    | Electrico/Azul |
 +-------+----------------+
 **/
- -- Eliminar todos los Pokémon de tipo Planta.
-
+```
+ 20. -- Eliminar todos los Pokémon de tipo Planta.
+```sql
 delete from Pokemon where id_tipo IN (select id from Tipo where nombre = 'Planta');
-
+```
+```sql
 /**
 +----+------------+---------+-------+
 | id |   nombre   | id_tipo | nivel |
@@ -369,11 +403,12 @@ delete from Pokemon where id_tipo IN (select id from Tipo where nombre = 'Planta
 | 25 | Rhydon     | 5       | 81    |
 +----+------------+---------+-------+
 **/
-
- -- Obtener los Pokémon con nombre y tipo ordenados alfabéticamente.
-
+```
+ 21. -- Obtener los Pokémon con nombre y tipo ordenados alfabéticamente.
+```sql
 select p.nombre, t.nombre from Pokemon p JOIN Tipo t ON p.id_tipo = t.id ORDER BY p.nombre;
-
+```
+```sql
 /**
 +------------+----------------+
 |   nombre   |     nombre     |
@@ -400,11 +435,12 @@ select p.nombre, t.nombre from Pokemon p JOIN Tipo t ON p.id_tipo = t.id ORDER B
 | Zapdos     | Electrico/Azul |
 +------------+----------------+
 **/
-
- -- Obtén todos los Pokémon cuyos nombres contienen las letras 'sa'.
-
+```
+ 22. -- Obtén todos los Pokémon cuyos nombres contienen las letras 'sa'.
+```sql
 select * from Pokemon where nombre LIKE '%sa%';
-
+```
+```sql
 /**
 +----+-----------+---------+-------+
 | id |  nombre   | id_tipo | nivel |
@@ -412,14 +448,16 @@ select * from Pokemon where nombre LIKE '%sa%';
 | 15 | Sandslash | 5       | 34    |
 +----+-----------+---------+-------+
 **/
- -- Encuentra todos los Pokémon cuyo nivel es 40, 50 o 60.
-
+```
+ 23. -- Encuentra todos los Pokémon cuyo nivel es 40, 50 o 60.
+```sql
 select * from Pokemon where nivel IN (40, 50, 60);
-
- -- Obtén todos los Pokémon de tipo Fuego cuyos nombres comienzan con la letra 'C'.
-
+```
+ 24. -- Obtén todos los Pokémon de tipo Fuego cuyos nombres comienzan con la letra 'C'.
+```sql
 select * from Pokemon p JOIN Tipo t ON p.id_tipo = t.id where p.nombre LIKE 'C%' and t.nombre = 'Fuego';
-
+```
+```sql
 /**
 +----+------------+---------+-------+----+--------+
 | id |   nombre   | id_tipo | nivel | id | nombre |
@@ -428,11 +466,12 @@ select * from Pokemon p JOIN Tipo t ON p.id_tipo = t.id where p.nombre LIKE 'C%'
 | 17 | Charizard  | 2       | 51    | 2  | Fuego  |
 +----+------------+---------+-------+----+--------+
 **/
-
- -- Encuentra los nombres y tipos de los Pokémon cuyo nivel es mayor que el promedio de todos los Pokémon en la base de datos.
-
+```
+ 25. -- Encuentra los nombres y tipos de los Pokémon cuyo nivel es mayor que el promedio de todos los Pokémon en la base de datos.
+```sql
 select p.nombre, t.nombre from Pokemon p JOIN Tipo t ON p.id_tipo = t.id where p.nivel > (select AVG(nivel) from Pokemon);
-
+```
+```sql
 /**
 +------------+----------------+
 |   nombre   |     nombre     |
@@ -448,9 +487,9 @@ select p.nombre, t.nombre from Pokemon p JOIN Tipo t ON p.id_tipo = t.id where p
 | Rhydon     | Tierra         |
 +------------+----------------+
 **/
+```
 
-
--- Tablas Pokemon y Tipo después de las modificaciones:
+## -- Tablas Pokemon y Tipo después de las modificaciones:
 
 /**
 +----+------------+---------+-------+
