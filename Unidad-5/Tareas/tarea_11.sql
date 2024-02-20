@@ -2469,6 +2469,32 @@ select COUNT(codigo_cliente) clientes_sin_representantes from cliente WHERE codi
 **/
 
 --Calcula la fecha del primer y último pago realizado por cada uno de los clientes. El listado deberá mostrar el nombre y los apellidos de cada cliente.
+select c.nombre_contacto, c.apellido_contacto, MIN(p.fecha_pago) AS primer_pago, MAX(p.fecha_pago) AS ultimo_pago from cliente c, pago p WHERE c.codigo_cliente = p.codigo_cliente GROUP BY c.codigo_cliente;
+
+/**
++-----------------+-------------------+-------------+-------------+
+| nombre_contacto | apellido_contacto | primer_pago | ultimo_pago |
++-----------------+-------------------+-------------+-------------+
+| Daniel G        | GoldFish          | 2008-11-10  | 2008-12-10  |
+| Anne            | Wright            | 2009-01-16  | 2009-02-19  |
+| Link            | Flaute            | 2007-01-08  | 2007-01-08  |
+| Akane           | Tendo             | 2006-01-18  | 2006-01-18  |
+| Jose            | Bermejo           | 2009-01-13  | 2009-01-13  |
+| Guillermo       | Rengifo           | 2009-01-06  | 2009-01-06  |
+| Pedro           | Camunas           | 2008-08-04  | 2008-08-04  |
+| Juan            | Rodriguez         | 2008-07-15  | 2008-07-15  |
+| Javier          | Villar            | 2009-01-15  | 2009-02-15  |
+| Maria           | Rodriguez         | 2009-02-16  | 2009-02-16  |
+| Luis            | Martinez          | 2009-03-06  | 2009-03-06  |
+| Maria           | Santillana        | 2009-03-26  | 2009-03-26  |
+| Eva María       | Sánchez           | 2008-03-18  | 2008-03-18  |
+| Matías          | San Martín        | 2009-02-08  | 2009-02-08  |
+| Benito          | Lopez             | 2009-01-13  | 2009-01-13  |
+| Sara            | Marquez           | 2009-01-16  | 2009-01-16  |
+| Jacob           | Jones             | 2007-10-06  | 2007-10-06  |
+| Justin          | Smith             | 2006-05-26  | 2006-05-26  |
++-----------------+-------------------+-------------+-------------+
+**/
 
 --Calcula el número de productos diferentes que hay en cada uno de los pedidos.
 --Calcula la suma de la cantidad total de todos los productos que aparecen en cada uno de los pedidos.
