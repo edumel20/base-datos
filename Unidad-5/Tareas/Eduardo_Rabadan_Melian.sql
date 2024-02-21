@@ -115,6 +115,7 @@ select id, nombre, apellido1 from cliente WHERE apellido2 IS NOT NULL ORDER BY a
 
 --Devuelve un listado de los nombres de los clientes que empiezan por A y terminan por n y también los nombres que empiezan por P. El listado deberá estar ordenado alfabéticamente.
 select nombre from cliente WHERE (nombre regexp 'A' OR nombre regexp 'P') ORDER BY nombre;
+--regexp ('^[a|p]* n&')
 
 /**
 +--------+
@@ -131,7 +132,7 @@ select nombre from cliente WHERE (nombre regexp 'A' OR nombre regexp 'P') ORDER 
 
 --Devuelve un listado de los nombres de los clientes que no empiezan por A. El listado deberá estar ordenado alfabéticamente.
 select nombre from cliente WHERE nombre not regexp 'A' ORDER BY nombre;
-
+-- not regexp (^a*)
 /**
 +-----------+
 |  nombre   |
