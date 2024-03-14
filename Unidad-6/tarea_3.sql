@@ -170,15 +170,43 @@ select cli.nombre, pro.nombre_producto, det.cantidad from detalles_ordenes det J
 
 
 --Obtener el nombre de los productos junto con los nombres de los clientes que han realizado órdenes de esos productos.
-
+select pro.nombre_producto, cli.nombre_cliente from productos pro JOIN detalles_ordenes det ON pro.id_producto = det.id_producto JOIN clientes cli ON cli.id_cliente = det.id_cliente;
 --Mostrar todas las órdenes con sus clientes y productos, incluso si no hay órdenes.
 --Obtener el nombre de los clientes junto con el número total de órdenes que han realizado.
+select cli.nombre_cliente, COUNT(ord.id_orden) AS total_ordenes from clientes cli JOIN ordenes ord ON cli.id_cliente = ord.id_cliente GROUP BY cli.id_cliente;
+
+/**
++----------------+---------------+
+| nombre_cliente | total_ordenes |
++----------------+---------------+
+| Juan           |             1 |
+| María          |             1 |
+| Pedro          |             1 |
++----------------+---------------+
+**/
+
 --Mostrar todas las órdenes junto con el nombre del cliente y el nombre del producto.
+select det.id_orden, cli.nombre_cliente, pro.nombre_producto from detalles_ordenes det JOIN clientes cli ON 
 --Mostrar todas las órdenes con sus productos y clientes, incluso si no hay información de cliente.
+
 --Obtener el nombre de los productos junto con los nombres de los clientes que han realizado órdenes de esos productos, incluyendo los productos que no han sido ordenados.
 --Mostrar todas las órdenes junto con el nombre del cliente y el nombre del producto, incluyendo las órdenes sin productos.
 --Obtener el nombre de los clientes junto con el número total de órdenes que han realizado, incluyendo los clientes que no han realizado órdenes.
+select cli.nombre_cliente, COUNT(ord.id_orden) AS total_ordenes from clientes cli JOIN ordenes ord ON cli.id_cliente = ord.id_cliente GROUP BY cli.id_cliente;
+
+/**
++----------------+---------------+
+| nombre_cliente | total_ordenes |
++----------------+---------------+
+| Juan           |             1 |
+| María          |             1 |
+| Pedro          |             1 |
++----------------+---------------+
+Todos los clientes han realizado órdenes.
+**/
+
 --Mostrar todas las órdenes con sus clientes y productos, incluyendo las órdenes y productos que no tienen información.
+
 --Realizar un inner join entre clientes y órdenes.
 select cli.*, ord.id_orden, ord.fecha_orden from clientes cli JOIN ordenes ord ON cli.id_cliente = ord.id_cliente;
 
@@ -193,8 +221,34 @@ select cli.*, ord.id_orden, ord.fecha_orden from clientes cli JOIN ordenes ord O
 **/
 
 --Realizar un left join entre órdenes y detalles de órdenes.
-select 
+select ord.*, det.id_detalle, det.id_producto, det.cantidad from ordenes ord LEFT JOIN detalles_ordenes det ON ord.id_orden = det.id_orden;
+
+/**
++----------+------------+-------------+------------+-------------+----------+
+| id_orden | id_cliente | fecha_orden | id_detalle | id_producto | cantidad |
++----------+------------+-------------+------------+-------------+----------+
+|        1 |          1 | 2024-03-01  |          1 |           1 |        2 |
+|        2 |          2 | 2024-03-02  |          2 |           2 |        1 |
+|        3 |          3 | 2024-03-03  |          3 |           3 |        3 |
++----------+------------+-------------+------------+-------------+----------+
+**/
+
 --Realizar un right join entre productos y detalles de órdenes.
+select pro.*, det.id_detalle, det.id_orden, det.cantidad from productos pro LEFT JOIN detalles_ordenes det ON pro.id_producto = det.id_producto;
+
+/**
++-------------+-----------------+-----------------+------------+----------+----------+
+| id_producto | nombre_producto | precio_producto | id_detalle | id_orden | cantidad |
++-------------+-----------------+-----------------+------------+----------+----------+
+|           1 | Producto A      |           50.00 |          1 |        1 |        2 |
+|           2 | Producto B      |           75.00 |          2 |        2 |        1 |
+|           3 | Producto C      |          100.00 |          3 |        3 |        3 |
++-------------+-----------------+-----------------+------------+----------+----------+
+**/
+
 --Realizar un full join entre clientes y órdenes.
+select * from clientes cli FULL JOIN ordenes ord ON cli.id_cliente = ord.id_cliente;
+
 --Realizar un full join entre órdenes y detalles de órdenes.
 --Realizar un full join entre productos y detalles de órdenes.
+select pro.*, det.* from productos pro FULL JOIN detalles_ordenes det ON pro.id_producto = det.id_producto;
