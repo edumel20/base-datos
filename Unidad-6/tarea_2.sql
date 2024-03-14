@@ -170,7 +170,7 @@ select * from ordenes WHERE cantidad > 2;
 
 --Mostrar los productos ordenados por precio de forma descendente.
 select * from productos ORDER BY precio desc;
-
+-- poner más de un desc/asc
 /**
 +-------------+-------------+--------+
 | id_producto | nombre      | precio |
@@ -205,7 +205,7 @@ Consultas de ejemplo para practicar joins
 
 --Seleccionar todos los clientes y sus órdenes, incluso si no tienen órdenes
 select cli.*, ord.* from clientes cli JOIN ordenes ord ON cli.id_cliente = ord.id_cliente;
-
+-- QUITAR un id_cliente que está repetido.
 /**
 +------------+------------+---------------+----------+------------+-------------+----------+
 | id_cliente | nombre     | direccion     | id_orden | id_cliente | id_producto | cantidad |
@@ -265,9 +265,11 @@ select ord.id_orden, pro.id_producto from ordenes ord JOIN productos pro ON ord.
 
 --Mostrar el nombre de los clientes que han realizado órdenes de productos que cuestan más de 50
 select cli.nombre from clientes cli, ordenes ord JOIN productos pro ON cli.id_cliente = ord.id_cliente and ord.id_producto = pro.id_producto WHERE pro.precio > 50; 
+--HAY QUE HACER OTRO JOIN para que lo pille.
 
 --Obtener el nombre de los productos que no se han ordenado aún
 select pro.nombre from productos pro JOIN ordenes ord ON pro.id_producto = ord.id_producto WHERE pro.id_producto not in (select ord.id_producto from ordenes);
+-- CAMBIAR SUBCONSULTA POR 'IS NULL'
 
 /**
 Muestra una sentencia vacía debido a que todos los productos de la "tabla productos" han sido ordenados.
@@ -335,7 +337,7 @@ select p.nombre, c.nombre from productos p ON ordenes o ON p.id_producto = o.id_
 
 --Mostrar todas las órdenes con sus clientes y productos, incluso si no hay órdenes
 select c.nombre, p.nombre from clientes c LEFT JOIN ordenes o ON c.id_cliente = o.id_cliente LEFT JOIN productos p ON o.id_producto = p.id_producto;
-
+--FALTÓ PONER o.id_orden 
 /**
 +------------+-------------+
 | nombre     | nombre      |
@@ -394,7 +396,7 @@ select c.nombre, COUNT(o.id_orden) AS total_ordenes from clientes c LEFT JOIN or
 
 --Mostrar todas las órdenes junto con el nombre del cliente y el nombre del producto
 select c.nombre, p.nombre from ordenes o LEFT JOIN clientes c ON o.id_cliente = c.id_cliente LEFT JOIN productos p ON o.id_producto = p.id_producto;
-
+--AÑADIR EN EL SELECT 'o.id_orden'
 /**
 +------------+-------------+
 | nombre     | nombre      |
