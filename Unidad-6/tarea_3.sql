@@ -122,7 +122,7 @@ select * from productos ORDER BY precio_producto desc;
 
 --Seleccionar todos los clientes y sus órdenes, incluso si no tienen órdenes.
 select cli.*, ord.id_orden, ord.fecha_orden from clientes cli JOIN ordenes ord ON cli.id_cliente = ord.id_cliente;
-
+--USAR LEFT JOIN!!!
 /**
 +------------+----------------+----------------+----------+-------------+
 | id_cliente | nombre_cliente | ciudad_cliente | id_orden | fecha_orden |
