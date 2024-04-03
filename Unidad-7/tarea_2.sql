@@ -16,7 +16,7 @@ CREATE TABLE cliente (
     domicilio VARCHAR(30),
     ciudad VARCHAR(20),
     provincia VARCHAR(20),
-    telefono VARCHAR(11),
+    telefono VARCHAR(11)
 );
 
 describe cliente;
@@ -34,7 +34,6 @@ describe cliente;
 +-----------+-------------+------+-----+---------+-------+
 6 rows in set (0,02 sec)
 **/
-
 ALTER TABLE cliente MODIFY documento CHAR(8) NOT NULL, ADD PRIMARY KEY(documento);
 /**
 Query OK, 0 rows affected (0,08 sec)
