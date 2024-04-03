@@ -46,7 +46,7 @@ describe alumnos;
     Records: 0  Duplicates: 0  Warnings: 0
     **/
 
-    create unique index idx_cuidad_prov ON alumnos(cuidad, provincia);
+    create unique index idx_ciudad_prov ON alumnos(ciudad, provincia);
     /**
     Query OK, 0 rows affected (0,02 sec)
     Records: 0  Duplicates: 0  Warnings: 0
@@ -68,9 +68,9 @@ describe alumnos;
     **/
 
 -- 4. Intente ingresar un alumno con clave primaria repetida:
-insert into alumnos (numero_inscripcion, fecha_inscripcion_inscripcion, nombre) values (2, 2024, "Eduardo");
+insert into alumnos (numero_inscripcion, fecha_inscripcion, nombre) values (3, 2024, "Eduardo");
 /**
-ERROR 1054 (42S22): Unknown column 'fecha_inscripcion_inscripcion' in 'field list'
+ERROR 1062 (23000): Duplicate entry '3-2024' for key 'alumnos.PRIMARY'
 **/
 
 -- 5. Intente ingresar un alumno con documento repetido:
