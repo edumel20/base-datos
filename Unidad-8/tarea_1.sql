@@ -88,7 +88,7 @@ INSERT INTO Products (ProductName, Price) VALUES ('Producto 6', 21.60);
     **/
 
     DELIMITER;
-    CALL actualizar_nombre_usuarios('Pablo', 'Pedro');
+    CALL actualizar_nombre_usuarios('Pedro', 'Pablo');
     /**
     Query OK, 1 row affected (0,01 sec)
     **/
@@ -107,4 +107,51 @@ INSERT INTO Products (ProductName, Price) VALUES ('Producto 6', 21.60);
     |      7 | Pepe     | pepe@example.com  |
     +--------+----------+-------------------+
     7 rows in set (0,00 sec)
+    **/
+
+-- 4. Implementa funciones para realizar cálculos o consultas:
+    --4.1: Función para calcular el precio total de un conjunto de productos.
+    DELIMITER $$
+    CREATE FUNCTION total_price() RETURNS FLOAT DETERMINISTIC
+    BEGIN
+        DECLARE total_price FLOAT;
+        select SUM(price) INTO total_price from Products;
+        return total_price;
+    END$$
+    /**
+    Query OK, 0 rows affected (0,05 sec)
+    **/
+
+    DELIMITER ;
+    select total_price();
+    /**
+    +---------------+
+    | total_price() |
+    +---------------+
+    |         95.09 |
+    +---------------+
+    1 row in set (0,00 sec)
+    **/
+
+    -- 4.2 Función para contar el número de usuarios
+    DELIMITER $$
+    CREATE FUNCTION total_users() RETURNS INT DETERMINISTIC
+    BEGIN
+        DECLARE total_users INT;
+        select COUNT(*) INTO total_users from Users;
+        return total_users;
+    END $$
+    /**
+    Query OK, 0 rows affected (0,11 sec)
+    **/
+
+    DELIMITER ;
+    select total_users();
+    /**
+    +---------------+
+    | total_users() |
+    +---------------+
+    |             7 |
+    +---------------+
+    1 row in set (0,01 sec)
     **/
