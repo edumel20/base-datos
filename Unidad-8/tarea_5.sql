@@ -96,11 +96,31 @@ BEGIN
         IF done THEN
             LEAVE read_loop;
         END IF;
-        UPDATE empleados SET salario = salario * (1 + porcentaje_aumento / 100) WHERE id = emp_id;
+        
     END LOOP;
     CLOSE cur;
 END $$
  
 -- 4. Escribe un procedimiento almacenado que elimine todos los empleados cuyo salario esté entre 2000 y 2500.
+
+DELIMITER $$
+CREATE PROCEDURE procedimiento_1(IN salario DECIMAL(10,2))
+  BEGIN
+      DECLARE done INT DEFAULT FALSE;
+      DECLARE emp_nombre VARCHAR(100);
+      DECLARE cur CURSOR FOR SELECT nombre FROM empleados WHERE salario BETWEEN 2000 AND 2500;
+      DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
+
+      OPEN cur;
+      read_loop: LOOP
+          FETCH cur INTO emp_nombre;
+          IF done THEN
+              LEAVE read_loop;
+          END IF;
+          INSERT INTO empleados_destino (nombre) VALUES (emp_nombre);
+      END LOOP;
+      CLOSE cur;
+END $$
+
  
 -- 5. Escribe un procedimiento almacenado que aumente el salario de un empleado específico cuyo nombre se pasa como parámetro en un 20%.
