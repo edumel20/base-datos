@@ -66,12 +66,12 @@ DELIMITER $$
 
 CREATE PROCEDURE generar_empleados_aleatorios_2(IN iterations INT) --(METERLE MÁS PARÁMETROS COMO EL SALARIO MÍNIMO Y MÁXIMO, ETC...)
 BEGIN
-    DECLARE counter INT DEFAULT 0;
+    DECLARE counter INT DEFAULT 0;   --(DECLARAR NOMBRE)
 
     WHILE counter < iterations DO
         INSERT INTO empleados (nombre, salario)
         VALUES (UUID(), FLOOR(RAND() * (10000 - 2000 + 1)) + 2000);
-        SELECT counter;
+        SELECT counter;    --(en este caso no se utiliza)
 
         SET counter = counter + 1;
     END WHILE;
@@ -105,8 +105,8 @@ select * from empleados;
 -- 3. Inserta dos filas en la tabla empleados con nombres aleatorios generados usando la función RAND() junto con ORDER BY RAND().
 DELIMITER $$
 
-CREATE PROCEDURE generar_empleados_aleatorios_3(IN iterations INT) --(METERLE MÁS PARÁMETROS COMO EL SALARIO MÍNIMO Y MÁXIMO, ETC...)
-BEGIN
+CREATE PROCEDURE generar_empleados_aleatorios_3(IN iterations INT, IN nombre VARCHAR(100), IN sueldo_base INT) --(METERLE MÁS PARÁMETROS COMO EL SALARIO MÍNIMO Y MÁXIMO, ETC...)
+BEGIN                                                                                                          --(PROBARLO DE NUEVO PARA VERLO CON DIFERENTES PARÁMETROS)
     DECLARE counter INT DEFAULT 0;
 
     WHILE counter < iterations DO
