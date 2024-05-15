@@ -26,7 +26,7 @@ CALL my_loop(5);
 -- 1. Inserta cinco filas en la tabla empleados con nombres aleatorios generados usando la función CONCAT() junto con RAND().
 DELIMITER $$
 
-CREATE PROCEDURE generar_empleados_aleatorios(IN iterations INT)
+CREATE PROCEDURE generar_empleados_aleatorios(IN iterations INT) --(METERLE MÁS PARÁMETROS COMO EL SALARIO MÍNIMO Y MÁXIMO, ETC...)
 BEGIN
     DECLARE counter INT DEFAULT 0;
 
@@ -64,7 +64,7 @@ select * from empleados;
 -- 2. Inserta tres filas en la tabla empleados con nombres aleatorios generados usando la función UUID().
 DELIMITER $$
 
-CREATE PROCEDURE generar_empleados_aleatorios_2(IN iterations INT)
+CREATE PROCEDURE generar_empleados_aleatorios_2(IN iterations INT) --(METERLE MÁS PARÁMETROS COMO EL SALARIO MÍNIMO Y MÁXIMO, ETC...)
 BEGIN
     DECLARE counter INT DEFAULT 0;
 
@@ -105,7 +105,7 @@ select * from empleados;
 -- 3. Inserta dos filas en la tabla empleados con nombres aleatorios generados usando la función RAND() junto con ORDER BY RAND().
 DELIMITER $$
 
-CREATE PROCEDURE generar_empleados_aleatorios_3(IN iterations INT)
+CREATE PROCEDURE generar_empleados_aleatorios_3(IN iterations INT) --(METERLE MÁS PARÁMETROS COMO EL SALARIO MÍNIMO Y MÁXIMO, ETC...)
 BEGIN
     DECLARE counter INT DEFAULT 0;
 
@@ -153,7 +153,7 @@ select * from empleados;
 -- 4. Inserta cuatro filas en la tabla empleados con nombres aleatorios generados usando la función SUBSTRING_INDEX(UUID(), '-', -1).
 DELIMITER $$
 
-CREATE PROCEDURE generar_empleados_aleatorios_4(IN iterations INT)
+CREATE PROCEDURE generar_empleados_aleatorios_4(IN iterations INT) --(METERLE MÁS PARÁMETROS COMO EL SALARIO MÍNIMO Y MÁXIMO, ETC...)
 BEGIN
     DECLARE counter INT DEFAULT 0;
 
