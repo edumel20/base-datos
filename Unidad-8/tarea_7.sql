@@ -142,14 +142,62 @@ END$$
 DELIMITER ;
 
 select Identificador, Nombre, Salario_base, subsidio_transporte(Salario_base) AS Subsidio_Transporte
-from persona;
-
+from persona LIMIT 1;
+/**
++--------------------------------------+----------+--------------+---------------------+
+| Identificador                        | Nombre   | Salario_base | Subsidio_Transporte |
++--------------------------------------+----------+--------------+---------------------+
+| 14c0e192-1627-11ef-90bc-0800271a12ae | Persona1 |      2397.00 |              167.79 |
++--------------------------------------+----------+--------------+---------------------+
+1 row in set (0,01 sec)
+**/
 
 --Función salud: La salud que corresponde al 4% al salario básico. Actualiza el valor en la tabla.
+DELIMITER $$
+
+CREATE FUNCTION calcular_salud(salario_base DECIMAL(10, 2))
+RETURNS DECIMAL(10, 2)
+DETERMINISTIC
+BEGIN
+    RETURN salario_base * 0.04;
+END$$
+
+DELIMITER ;
+
+select Identificador, Nombre, Salario_base, calcular_salud(Salario_base) AS Salud
+from persona LIMIT 1;
+/**
+
+**/
 
 --Función pension: La pensión que corresponde al 4% al salario básico. Actualiza el valor en la tabla.
 --Función bono: Un bono que corresponde al 8% al salario básico. Actualiza el valor en la tabla.
 --Función integral: El salario integral es la suma del salario básico - salud - pension + bono + sub de transporte. Actualiza el valor en la tabla.
+/**
+DELIMITER $$
+
+CREATE FUNCTION salario_integral(salario_base DECIMAL(10, 2), bono DECIMAL(10, 2))
+RETURNS DECIMAL(10, 2)
+DETERMINISTIC
+BEGIN
+    DECLARE subsidio DECIMAL(10, 2);
+    DECLARE salud DECIMAL(10, 2);
+    DECLARE pension DECIMAL(10, 2);
+
+    SET subsidio = calcular_subsidio_transporte(salario_base);
+    SET salud = calcular_salud(salario_base);
+    SET pension = calcular_pension(salario_base);
+
+    RETURN salario_base - salud - pension + bono + subsidio;
+END$$
+
+DELIMITER ;
+**/
+select Identificador, Nombre, Salario_base, Salud, Pension, Bono, Subsidio, salario_integral(Salario_base, Salud, Pension, Bono, Subsidio) AS Integral from persona;
+/**
+
+**/
+
 --Crea cada uno de las funciones anteriores para una persona en específico.
 --El parámetro de entrada debe de ser un identificar de la persona.
 
