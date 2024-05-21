@@ -83,7 +83,7 @@ INSERT INTO alumnos (nombre, apellido1, apellido2, nota) VALUES ('Jesé', 'Páez
 --Procedimiento1:
 --Crea un procedimiento que permita realizar la inserción de un número de alumnos, con una nota mímina y máxima. Estos valores pueden oscilar entre 3, y 10.
 DELIMITER $$
-
+/*
 CREATE PROCEDURE insertar_alumnos(
     IN num_alumnos INT,
     IN nota_minima DECIMAL(5,2),
@@ -105,30 +105,11 @@ BEGIN
 END$$
 
 DELIMITER ;
+*/
 call insertar_alumnos(5, 3.2, 9.1);
 
 
 --Crea un procedimiento que permita realizar la inserción de un número de alumnos, con una nota mímina y máxima. Estos valores pueden oscilar entre -10, y 12.
-DELIMITER $$
 
-CREATE PROCEDURE insertar_alumnos(
-    IN num_alumnos INT,
-    IN nota_minima DECIMAL(5,2),
-    IN nota_maxima DECIMAL(5,2)
-)
-BEGIN
-    DECLARE i INT DEFAULT 1;
-
-    WHILE i <= num_alumnos DO
-        INSERT INTO alumnos (nombre, apellido1, apellido2, nota)
-        VALUES (
-            CONCAT('Alumno', i),
-            'Apellido1',
-            'Apellido2',
-            ROUND(RAND() * (nota_maxima - nota_minima) + nota_minima, 2)
-        );
-        SET i = i + 1;
-    END WHILE;
-END$$
 
 --Realiza los procedimientos y verifica el comportamiento llamando a este con los parámetros adecuados.
