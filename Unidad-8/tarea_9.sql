@@ -99,7 +99,12 @@ DELIMITER ;
 
 --Ahora vamos a insertar datos para probar las funciones:
 
-INSERT INTO alumnos (nombre, apellido1, apellido2) VALUES ('Carlos', 'García', 'Pérez');
+INSERT INTO alumnos (nombre, apellido1, apellido2) VALUES ('Pedro', 'García', 'Aguado');
+INSERT INTO alumnos (nombre, apellido1, apellido2, email) VALUES ('María', 'Becerra', 'Gutiérrez', 'lamery_loca@gmail.com');
+
+/**
+
+**/
 
 --Una vez creada la tabla escriba un trigger con las siguientes características:
 
@@ -120,6 +125,32 @@ BEGIN
 END$$
 
 DELIMITER ;
+
+
+--Ahora vamos a insertar datos para probar las funciones:
+
+INSERT INTO alumnos (nombre, apellido1, apellido2) VALUES ('Pedro', 'García', 'Aguado');
+INSERT INTO alumnos (nombre, apellido1, apellido2, email) VALUES ('María', 'Becerra', 'Gutiérrez', 'lamery_loca@gmail.com');
+
+/**
++----+--------+-----------+------------+-----------------------+
+| id | nombre | apellido1 | apellido2  | email                 |
++----+--------+-----------+------------+-----------------------+
+|  1 | Pedro  | García    | Aguado     | pgaragu@ejemplo.com   |
+|  2 | María  | Becerra   | Gutiérrez  | lamery_loca@gmail.com |
++----+--------+-----------+------------+-----------------------+
+2 rows in set (0,00 sec)
+**/
+
+
+-- Ahora vamos a crear un procedimiento para insertar aleatoriamente más alumnos:
+
+
+
+
+
+
+
 
 
  --Verificación:
