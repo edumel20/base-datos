@@ -145,7 +145,49 @@ INSERT INTO alumnos (nombre, apellido1, apellido2, email) VALUES ('María', 'Bec
 
 -- Ahora vamos a crear un procedimiento para insertar aleatoriamente más alumnos:
 
+DELIMITER $$
+DROP PROCEDURE IF EXISTS insertar_alumnos;
+CREATE PROCEDURE insertar_alumnos(
+    IN p_iteration INT, 
+    IN p_prefix VARCHAR(10)
+)
+BEGIN
+    DECLARE counter INT DEFAULT 0;
+    DECLARE r_nombre VARCHAR(20);
+    DECLARE r_apellido1 VARCHAR(20);
+    DECLARE r_apellido2 VARCHAR(20);
 
+    WHILE counter < p_iteration DO
+        SET r_nombre = CONCAT(p_prefix, SUBSTRING_INDEX(UUID(), '-', 1));
+        SET r_apellido1 = CONCAT(p_prefix, SUBSTRING_INDEX(UUID(), '-', 1));
+        SET r_apellido2 = CONCAT(p_prefix, SUBSTRING_INDEX(UUID(), '-', 1));
+
+        INSERT INTO alumnos (nombre, apellido1, apellido2, email) VALUES (r_nombre, r_apellido1, r_apellido2, NULL);
+
+        SET counter = counter + 1;
+    END WHILE;
+END$$
+
+DELIMITER ;
+
+call insertar_alumnos(8, 'alumno');
+/**
+----+----------------+----------------+----------------+-----------------------+
+| id | nombre         | apellido1      | apellido2      | email                 |
++----+----------------+----------------+----------------+-----------------------+
+|  1 | Pedro          | García         | Aguado         | pgaragu@ejemplo.com   |
+|  2 | María          | Becerra        | Gutiérrez      | lamery_loca@gmail.com |
+|  3 | alumno8c654921 | alumno8c6549cb | alumno8c6549f0 | aalualu@ejemplo.com   |
+|  4 | alumno8c69d3ef | alumno8c69d4b7 | alumno8c69d50b | aalualu@ejemplo.com   |
+|  5 | alumno8c6dcb5c | alumno8c6dcc06 | alumno8c6dcc52 | aalualu@ejemplo.com   |
+|  6 | alumno8c713a28 | alumno8c713acf | alumno8c713b1e | aalualu@ejemplo.com   |
+|  7 | alumno8c75e494 | alumno8c75e518 | alumno8c75e54a | aalualu@ejemplo.com   |
+|  8 | alumno8c78b537 | alumno8c78b5e1 | alumno8c78b62c | aalualu@ejemplo.com   |
+|  9 | alumno8c7c2edc | alumno8c7c2f5c | alumno8c7c2f96 | aalualu@ejemplo.com   |
+| 10 | alumno8c80d5bb | alumno8c80d644 | alumno8c80d67c | aalualu@ejemplo.com   |
++----+----------------+----------------+----------------+-----------------------+
+10 rows in set (0,00 sec)
+**/
 
 
 
