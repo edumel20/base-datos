@@ -90,9 +90,9 @@ CREATE PROCEDURE insertar_alumnos(
     IN nota_maxima DECIMAL(5,2)
 )
 BEGIN
-    DECLARE i INT DEFAULT 1;
+    DECLARE counter INT DEFAULT 0;
 
-    WHILE i <= num_alumnos DO
+    WHILE counter <= num_alumnos DO
         INSERT INTO alumnos (nombre, apellido1, apellido2, nota)
         VALUES (
             CONCAT('Alumno', i),
@@ -100,7 +100,7 @@ BEGIN
             'Apellido2',
             ROUND(RAND() * (nota_maxima - nota_minima) + nota_minima, 2)
         );
-        SET i = i + 1;
+        SET counter = counter + 1;
     END WHILE;
 END$$
 
