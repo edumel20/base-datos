@@ -46,3 +46,7 @@ END$$
 
 DELIMITER;
 ```
+- Llamamos a la función anteriormente creada de la siguiente forma:
+```sql
+select calcular_salario_anual(2500.00, 12, 1500.00);
+```
